@@ -10,6 +10,7 @@ window.Player = (function() {
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
+	var gravity = -20;
 
 	var Player = function(el, game) {
 		this.el = el;
@@ -25,18 +26,24 @@ window.Player = (function() {
 		this.pos.y = INITIAL_POSITION_Y;
 	};
 
+
+
 	Player.prototype.onFrame = function(delta) {
-		if (Controls.keys.right) {
+		/*if (Controls.keys.right) {
 			this.pos.x += delta * SPEED;
 		}
 		if (Controls.keys.left) {
 			this.pos.x -= delta * SPEED;
-		}
-		if (Controls.keys.down) {
-			this.pos.y += delta * SPEED;
-		}
-		if (Controls.keys.up) {
+		}*/
+        if (Controls.isJumping) {
+			this.pos.y -= 2;
+		} 
+		
+		else if (Controls.keys.up) {
 			this.pos.y -= delta * SPEED;
+		}
+		else {
+			this.pos.y += 0.1;
 		}
 
 		this.checkCollisionWithBounds();
