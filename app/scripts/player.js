@@ -16,7 +16,6 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
-		//this.JUMP_SPEED = SPEED - 3;
 
 	};
 
@@ -37,16 +36,9 @@ window.Player = (function() {
 		if (Controls.keys.left) {
 			this.pos.x -= delta * SPEED;
 		}*/
-	  // this.jumped = Controls.didJump();
 
 		if (Controls.keys.space && Controls.didJump()) {
-		
-			
-			this.pos.y -= 8;
-			function myFunction() {
-
-    		setTimeout(function(){  }, 10000);
-}			//SPEED = 30;
+			this.pos.y -= 4;
 		} else {
 			this.pos.y += delta * SPEED * (0.2);
 		}
