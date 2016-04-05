@@ -7,10 +7,10 @@ window.Controls = (function() {
      */
     var KEYS = {
         32: 'space',
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
+       // 37: 'left',
+       // 38: 'up',
+       // 39: 'right',
+       // 40: 'down'
     };
 
     /**
@@ -19,6 +19,8 @@ window.Controls = (function() {
      * and touch devices.
      * @constructor
      */
+
+
     var Controls = function() {
         this._didJump = false;
         this.keys = {};
@@ -33,6 +35,9 @@ window.Controls = (function() {
             this._didJump = true;
         }
 
+        if (e.keyCode === this.keys.space) {
+            this._didJump = true;
+        }
         // Remember that this button is down.
         if (e.keyCode in KEYS) {
             var keyName = KEYS[e.keyCode];
