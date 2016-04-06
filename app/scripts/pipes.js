@@ -44,6 +44,7 @@ window.Pipes = (function() {
 
            
             if (this.pipeObj1.top.pos.x < -this.game.WORLD_WIDTH) {
+
                 this.pipeObj1.top.pos.x = 40;
                 this.pipeObj1.bottom.pos.x = 40;
 
