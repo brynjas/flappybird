@@ -11,6 +11,7 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = false;
+		this.pipe = new window.Pipes(el, this);
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -33,6 +34,8 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
+		this.pipe.onFrame(delta);
+
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
