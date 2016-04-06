@@ -11,17 +11,20 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = false;
-		this.pipe = new window.Pipes(el, this);
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
+	    this.pipe = new window.Pipes(el, this);
+	   // this.pipe = new window.Pipes(this.el.find('.Pipes'), this);
+
+
 	};
 
 	/**
 	 * Runs every frame. Calculates a delta and allows each game
 	 * entity to update itself.
 	 */
-	Game.prototype.onFrame = function() {
+	Game.prototype.onFrame = function(delta) {
 		// Check if the game loop should stop.
 		if (!this.isPlaying) {
 			return;
@@ -39,6 +42,7 @@ window.Game = (function() {
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
+
 	};
 
 	/**
