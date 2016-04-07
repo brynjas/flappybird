@@ -66,12 +66,12 @@ background-image: url("../images/bg.png");}
 
 .bottom1 , .bottom2 {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    /*bottom: 0;*/
+    /*right: 0;*/
     background-image: url("../images/tube2.png");
     background-repeat: no-repeat, repeat-y;
     width: 10em;
-    height: 18em;
+    height: 35em;/*18em*/
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-background-size: cover;
@@ -81,11 +81,11 @@ background-image: url("../images/bg.png");}
 }
 .top1, .top2 {
     position: absolute;
-    top: 0;
-    right: 0;
+    /*top: 0;
+    right: 0;*/
     background-image: url("../images/tube1.png");
     background-repeat: no-repeat, repeat-y;
-    background-position: left bottom;
+    /*background-position: left bottom;*/
     width: 10em;
     height: 28em;
     -webkit-transform: translateZ(0);

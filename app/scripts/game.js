@@ -43,7 +43,7 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
-		this.pipe.onFrame(delta);
+		this.pipe.onFrame(delta, this.player.getPos());
 
 
 		// Request next frame.

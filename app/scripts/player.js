@@ -18,6 +18,9 @@ window.Player = (function() {
 		this.pos = { x: 0, y: 0 };
 
 	};
+	Player.prototype.getPos = function() {
+		return this.pos;
+	};
 
 	/**
 	 * Resets the state of the player for a new game.
