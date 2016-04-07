@@ -19,7 +19,12 @@ window.Game = (function() {
 	   // this.pipe = new window.Pipes(this.el.find('.Pipes'), this);
 		
 		this.pipe1 = new window.Pipes(this.el.find('.top1'), this.el.find('.bottom1'), this, 100);
-		 this.ground = new window.Ground(this.el.find('.Ground'), this);
+		 //this.ground = new window.Ground(this.el.find('.Ground'), this);
+		// this.ground = new window.Ground(this.el.find('.Ground'), this.el.find('.Ground2'), this, 100);
+		// this.ground2 = new window.Ground(this.el.find('.Ground2'), this);
+        this.ground = new window.Ground(this.el.find('.Ground'), this, 0, 0);
+
+
 
 
 		// Pusing it to the array
@@ -48,7 +53,8 @@ window.Game = (function() {
 		this.player.onFrame(delta);
 		this.pipe.onFrame(delta, this.player.getPos());
 		this.ground.onFrame(delta);
-
+		//this.ground2.onFrame(delta);
+ 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
 

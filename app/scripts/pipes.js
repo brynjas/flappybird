@@ -13,7 +13,7 @@ window.Pipes = (function() {
         };
     };
 
-    var originalPipeGap = getRandomInt(7.5, 35);
+    var originalPipeGap = getRandomInt(10, 30);
 
     var Pipes = function(el, game) {
         this.el = el;
@@ -21,9 +21,7 @@ window.Pipes = (function() {
         
         this.pipeObj1 = {top: new PipeEl(this.el.find('.top1'), this.game.WORLD_WIDTH + 15, originalPipeGap),
     					 bottom: new PipeEl(this.el.find('.bottom1'), this.game.WORLD_WIDTH + 15, originalPipeGap + GAP)};
-        //this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translateY(' + this.pipeObj1.top.pos.y + 'em)');
-        //this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translateY(' + this.pipeObj1.bottom.pos.y + 'em)');
-    };
+      };
 
 
 	/**
@@ -34,8 +32,7 @@ window.Pipes = (function() {
 		this.pos.y = INITIAL_POSITION_Y;
 	};
 
-    var halfWidth = 10;
-    var halfHeigt = 50;
+
 
 	Pipes.prototype.onFrame = function(delta, position) {
 		

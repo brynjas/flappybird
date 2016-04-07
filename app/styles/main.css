@@ -62,20 +62,17 @@ margin-top: -28.8em;
 overflow: hidden;
 background-image: url("../images/bg.png");}
 
+
+
 .Ground {
-	position: absolute;
+    position: absolute;
     bottom: 0;
-    /*right: 0;*/
-    background-image: url("../images/ground.png");
-    background-repeat: repeat;
-    width: 20em;
-    height: 5em;/*18em*/
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    left: 0;
+    background-image: url('../images/ground.png');
+    background-size: 30em;
+    background-repeat: repeat-x;
+    width: 150em;
+    height: 5em;
 }
 
 .bottom1 , .bottom2 {
