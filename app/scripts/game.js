@@ -11,21 +11,21 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = false;
-		this.gameObjects = [];
+		//this.gameObjects = [];
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 	    this.pipe = new window.Pipes(el, this);
 	   // this.pipe = new window.Pipes(this.el.find('.Pipes'), this);
 		
-		var pipe1 = new window.Pipes(this.el.find('.top1'), this.el.find('.bottom1'), this, 100);
+		this.pipe1 = new window.Pipes(this.el.find('.top1'), this.el.find('.bottom1'), this, 100);
 		 this.ground = new window.Ground(this.el.find('.Ground'), this);
 
 
 		// Pusing it to the array
-		this.gameObjects.push(pipe1);
-		var pipe2 = new window.Pipes(this.el.find('.top2'), this.el.find('.bottom2'), this, 110);
-		this.gameObjects.push(pipe2);
+		//this.gameObjects.push(pipe1);
+		//var pipe2 = new window.Pipes(this.el.find('.top2'), this.el.find('.bottom2'), this, 110);
+		//this.gameObjects.push(pipe2);
 
 	};
 
