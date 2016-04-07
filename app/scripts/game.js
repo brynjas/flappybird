@@ -19,6 +19,9 @@ window.Game = (function() {
 	   // this.pipe = new window.Pipes(this.el.find('.Pipes'), this);
 		
 		var pipe1 = new window.Pipes(this.el.find('.top1'), this.el.find('.bottom1'), this, 100);
+		 this.ground = new window.Ground(this.el.find('.Ground'), this);
+
+
 		// Pusing it to the array
 		this.gameObjects.push(pipe1);
 		var pipe2 = new window.Pipes(this.el.find('.top2'), this.el.find('.bottom2'), this, 110);
@@ -44,7 +47,7 @@ window.Game = (function() {
 		// Update game entities.
 		this.player.onFrame(delta);
 		this.pipe.onFrame(delta, this.player.getPos());
-
+		this.ground.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);

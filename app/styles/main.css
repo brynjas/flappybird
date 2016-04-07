@@ -62,7 +62,21 @@ margin-top: -28.8em;
 overflow: hidden;
 background-image: url("../images/bg.png");}
 
-
+.Ground {
+	position: absolute;
+    bottom: 0;
+    /*right: 0;*/
+    background-image: url("../images/ground.png");
+    background-repeat: repeat;
+    width: 20em;
+    height: 5em;/*18em*/
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 .bottom1 , .bottom2 {
     position: absolute;
@@ -86,7 +100,7 @@ background-image: url("../images/bg.png");}
     background-image: url("../images/tube1.png");
     background-repeat: no-repeat, repeat-y;
     /*background-position: left bottom;*/
-    width: 11em;
+    width: 10em;
     height: 75em;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
