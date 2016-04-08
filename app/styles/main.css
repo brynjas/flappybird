@@ -111,7 +111,7 @@ background-image: url("../images/bg.png");}
     height: 5em;
 }
 
-.bottom1 , .bottom2 {
+.bottom1 , .bottom2, .bottom3 {
     position: absolute;
     /*bottom: 0;*/
     /*right: 0;*/
@@ -126,7 +126,7 @@ background-image: url("../images/bg.png");}
     -o-background-size: cover;
     background-size: cover;
 }
-.top1, .top2 {
+.top1, .top2, .top3 {
     position: absolute;
     /*top: 0;
     right: 0;*/
