@@ -36,11 +36,11 @@ window.Pipes = (function() {
 
 
 
-        this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + 0+ 'em, ' + 0+ "em)");
-        this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
-
-		//this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + this.pipeObj1.top.pos.y + "em)");
+        //this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + 0+ 'em, ' + 0+ "em)");
         //this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
+
+		this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + this.pipeObj1.top.pos.y + "em)");
+        this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
 
 	};
 

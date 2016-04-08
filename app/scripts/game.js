@@ -12,6 +12,8 @@ window.Game = (function() {
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = false;
 		//this.gameObjects = [];
+		//this.bg = new window.Background(this.el.find('.Background'), this, 0, 0);
+		this.bg = new window.Bg(this.el.find('.Background'), this, 0, 0);
 
 		// Cache a bound onFrame since we need it each frame.
 	    this.pipe = new window.Pipes(el, this);
@@ -38,11 +40,13 @@ window.Game = (function() {
 		var now = +new Date() / 1000,
 				delta = now - this.lastFrame;
 		this.lastFrame = now;
+		this.bg.onFrame(delta);
 
 		// Update game entities.
 		this.player.onFrame(delta);
 		this.pipe.onFrame(delta, this.player.getPos());
 		this.ground.onFrame(delta);
+
 		//this.ground2.onFrame(delta);
  
 		// Request next frame.
