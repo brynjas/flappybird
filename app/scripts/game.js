@@ -14,23 +14,13 @@ window.Game = (function() {
 		//this.gameObjects = [];
 
 		// Cache a bound onFrame since we need it each frame.
-		this.onFrame = this.onFrame.bind(this);
 	    this.pipe = new window.Pipes(el, this);
 	   // this.pipe = new window.Pipes(this.el.find('.Pipes'), this);
 		
 		this.pipe1 = new window.Pipes(this.el.find('.top1'), this.el.find('.bottom1'), this, 100);
-		 //this.ground = new window.Ground(this.el.find('.Ground'), this);
-		// this.ground = new window.Ground(this.el.find('.Ground'), this.el.find('.Ground2'), this, 100);
-		// this.ground2 = new window.Ground(this.el.find('.Ground2'), this);
-        this.ground = new window.Ground(this.el.find('.Ground'), this, 0, 0);
+		   this.ground = new window.Ground(this.el.find('.Ground'), this, 0, 0);
 
-
-
-
-		// Pusing it to the array
-		//this.gameObjects.push(pipe1);
-		//var pipe2 = new window.Pipes(this.el.find('.top2'), this.el.find('.bottom2'), this, 110);
-		//this.gameObjects.push(pipe2);
+		this.onFrame = this.onFrame.bind(this);
 
 	};
 
@@ -77,6 +67,9 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
+		//this.pipe1.reset();
+		this.pipe.reset();
+
 	};
 
 	/**

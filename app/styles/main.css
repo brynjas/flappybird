@@ -25,13 +25,12 @@
     height: 7.5em;
     width: 7.5em;
 
-     background-image: url(../images/birdwing5.png);
-	 background-repeat: no-repeat;
-     background-size: cover;
+    background-image: url(../images/birdwing5.png);
+	background-repeat: no-repeat;
+    background-size: cover;
  
-  -webkit-animation: flying 0.3s infinite; /* Safari 4+ */
- animation-timing-function: ease-in ease-out;
-
+  	-webkit-animation: flying 0.3s infinite; /* Safari 4+ */
+ 	animation-timing-function: ease-in ease-out;
 }
 
 /* Chrome, Safari, Opera */
@@ -43,8 +42,6 @@
     transform: rotate(50deg);
   }
 }
-
-
 
 .Scoreboard {
 	position: absolute;

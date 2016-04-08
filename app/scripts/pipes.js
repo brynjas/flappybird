@@ -26,8 +26,22 @@ window.Pipes = (function() {
 	 * Resets the state of the player for a new game.
 	 */
 	Pipes.prototype.reset = function() {
-		this.pos.x = INITIAL_POSITION_X;
-		this.pos.y = INITIAL_POSITION_Y;
+
+        console.log("er í pipe reset");
+
+        this.pipeObj1.top.pos.x = this.game.WORLD_WIDTH + 15;
+        this.pipeObj1.top.pos.y = originalPipeGap;
+        this.pipeObj1.bottom.pos.x = this.game.WORLD_WIDTH + 15;
+        this.pipeObj1.bottom.pos.y = originalPipeGap + GAP;
+
+
+
+        this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + 0+ 'em, ' + 0+ "em)");
+        this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
+
+		//this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + this.pipeObj1.top.pos.y + "em)");
+        //this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
+
 	};
 
 
