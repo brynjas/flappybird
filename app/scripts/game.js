@@ -6,6 +6,7 @@ window.Game = (function() {
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
 	 * @constructor
+
 	 */
 	var Game = function(el) {
 		this.el = el;
@@ -24,10 +25,29 @@ window.Game = (function() {
 
 		this.onFrame = this.onFrame.bind(this);
 
+		var music = document.getElementById("myMusic");
+		music.play();
+		music.volume = 0.2;
 
-		 var music = document.getElementById('backgroundMusic');
-        music.play();
-        music.volume = 0.2;
+
+ 		var PlaySound = true;
+	 
+
+
+	 $(".Mute").click(function(){
+    	console.log("inni mute ");
+    	
+    	if(PlaySound === true){
+    		console.log("inni mute takka ");
+    		music.pause();
+    	    music.volume = 0.0;
+    		PlaySound= false; 
+		}
+		else{
+			PlaySound = true;
+		}
+	});
+
 
 	};
 
@@ -58,6 +78,7 @@ window.Game = (function() {
 		window.requestAnimationFrame(this.onFrame);
 
 	};
+
 
 	/**
 	 * Starts a new game.
@@ -98,6 +119,40 @@ window.Game = (function() {
 					that.start();
 				});
 	};
+
+	Game.prototype.TheSound = function() {
+   		
+      var music = document.getElementById('myMusic');
+      console.log("Mute: " , this.mute );
+
+        if (!this.mute) {
+             this.mute = false;
+            music.play();
+            music.volume = 0.0;
+        }
+        else {
+            this.mute = true;
+            music.play();
+            music.volume = 0.2;
+        }
+    };
+
+    Game.prototype.MuteSound = function(){
+
+    	this.mute = false;
+    	console.log("MuteSound Mute: ", this.mute );
+
+    	this.TheSound();
+    };
+
+     Game.prototype.PlaySound = function(){
+
+    	this.mute = true;
+    	console.log("PlaySound Mute: ", this.mute );
+
+    	this.TheSound();
+    };
+
 
 	/**
 	 * Some shared constants.

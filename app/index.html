@@ -17,6 +17,7 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+
         <!-- endbuild -->
     </head>
     <body>
@@ -28,7 +29,7 @@
          <div class="Background"> </div>
 
        
-          < <div class="bottom1 Pipes"></div> 
+          <div class="bottom1 Pipes"></div> 
             <div class="top1 Pipes"></div>
 
             <div class="bottom2 Pipes"></div>
@@ -40,6 +41,7 @@
            
 
             <div class="Player">
+
                 
                 <div class="bird">
                     <div class="wing"> </div>
@@ -55,7 +57,17 @@
                     <span class="Scoreboard-restartText">Restart</span>
                 </button>
             </div>
-            <audio class="Music" id="BackgroundMusic" src="Sound/8bit.mp3"> </audio>
+
+
+            <div class="Music">
+      
+            <button class="Mute">Mute</button>
+                
+                <audio  id="myMusic" src="Sound/8bit.mp3"> </audio> 
+       
+            </div>
+
+
         </div>
 
         <!-- build:js scripts/vendor.js -->
