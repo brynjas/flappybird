@@ -120,6 +120,8 @@ window.Pipes = (function() {
                     position.x - 2.5 <= (this.pipeArr[i].bottom.pos.x + 2.15) &&
                         position.y + 2.5 >= (this.pipeArr[i].bottom.pos.y - 2.5)) {
                 updateScoreBoard();
+               var punch = new Audio("sound/pipe.mp3");
+                punch.play();
                 return this.game.gameover();
             }
 
@@ -127,6 +129,8 @@ window.Pipes = (function() {
                     position.x - 2.5 <= (this.pipeArr[i].top.pos.x + 2.15) &&
                         position.y - 2.5 <= (this.pipeArr[i].top.pos.y + 2.5)) {
                 updateScoreBoard();
+                var punch = new Audio("sound/pipe.mp3");
+                punch.play();
                 return this.game.gameover();
             }
         }      
