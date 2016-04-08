@@ -14,8 +14,8 @@ window.Ground = (function() {
     };
 
     Ground.prototype.onFrame = function(delta) {
-            this.pos.x -= delta * 25;
-            if (this.pos.x < -50 ) {
+            this.pos.x -= delta * 20;
+            if (this.pos.x < -40.5 ) {
                 this.pos.x = 0;
             }
 
