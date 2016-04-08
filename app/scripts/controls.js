@@ -31,12 +31,18 @@ window.Controls = (function() {
 
     Controls.prototype._onKeyDown = function(e) {
         // Only jump if space wasn't pressed.
+     var flapp = new Audio("sound/flapp2.wav");
+
         if (e.keyCode === 32 && !this.keys.space) {
             this._didJump = true;
+            flapp.play();
         }
 
         if (e.keyCode === this.keys.space) {
             this._didJump = true;
+            flapp.play();
+
+       
         }
         // Remember that this button is down.
         if (e.keyCode in KEYS) {
