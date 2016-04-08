@@ -24,6 +24,11 @@ window.Game = (function() {
 
 		this.onFrame = this.onFrame.bind(this);
 
+
+		 var music = document.getElementById('backgroundMusic');
+        music.play();
+        music.volume = 0.2;
+
 	};
 
 	/**

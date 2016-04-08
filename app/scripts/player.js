@@ -30,8 +30,6 @@ window.Player = (function() {
 		this.pos.y = INITIAL_POSITION_Y;
 	};
 
-
-
 	Player.prototype.onFrame = function(delta) {
 		/*if (Controls.keys.right) {
 			this.pos.x += delta * SPEED;
@@ -41,9 +39,9 @@ window.Player = (function() {
 		}*/
 
 		if (Controls.keys.space && Controls.didJump()) {
-			this.pos.y -= 4.8;
+			this.pos.y -= 6;
 		} else {
-			this.pos.y += delta * SPEED * (0.45);
+			this.pos.y += delta * SPEED * (0.7);
 		}
 		this.checkCollisionWithBounds();
 
