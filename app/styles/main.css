@@ -4,8 +4,47 @@
 	left: 0;
 	width: 5em;
 	height: 5em;
-	background: blue;
 }
+
+
+.bird {
+    position: absolute;
+    left: -1.25em;
+    top: -1em;
+    height: 7.5em;
+    width: 7.5em;
+    background-image: url(../images/bird3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+}
+.wing {
+    position: absolute;
+    left: -1.6em;
+    top: -0.1em;
+    height: 7.5em;
+    width: 7.5em;
+
+     background-image: url(../images/birdwing5.png);
+	 background-repeat: no-repeat;
+     background-size: cover;
+ 
+  -webkit-animation: flying 0.3s infinite; /* Safari 4+ */
+ animation-timing-function: ease-in ease-out;
+
+}
+
+/* Chrome, Safari, Opera */
+@keyframes flying {
+  from {
+    transform: rotate(-50deg);
+  }
+  to {
+    transform: rotate(50deg);
+  }
+}
+
+
 
 .Scoreboard {
 	position: absolute;

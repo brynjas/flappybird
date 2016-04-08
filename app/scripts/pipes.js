@@ -22,8 +22,6 @@ window.Pipes = (function() {
         this.pipeObj1 = {top: new PipeEl(this.el.find('.top1'), this.game.WORLD_WIDTH + 15, originalPipeGap),
     					 bottom: new PipeEl(this.el.find('.bottom1'), this.game.WORLD_WIDTH + 15, originalPipeGap + GAP)};
       };
-
-
 	/**
 	 * Resets the state of the player for a new game.
 	 */
@@ -41,8 +39,8 @@ window.Pipes = (function() {
         var pipeGap = getRandomInt(7.5, 35);
         // var worldHeight = this.game.WORLD_HEIGHT;
 
-        console.log("Player-x:" + position.x + " y:" + position.y);
-        console.log("TopPipe-x:" + this.pipeObj1.top.pos.x + " y:" + this.pipeObj1.top.pos.y);
+       // console.log("Player-x:" + position.x + " y:" + position.y);
+        //console.log("TopPipe-x:" + this.pipeObj1.top.pos.x + " y:" + this.pipeObj1.top.pos.y);
 
  		this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + (this.pipeObj1.top.pos.y - 69.5) + "em)");
         this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.bottom.pos.x + "em, " + this.pipeObj1.bottom.pos.y + "em)");
