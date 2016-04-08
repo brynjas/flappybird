@@ -78,12 +78,14 @@ window.Pipes = (function() {
 
 
 	Pipes.prototype.onFrame = function(delta, position) {
-        
+        var punch = new Audio("sound/pipe.mp3");
+
         if (position.x < 0 ||
             position.x + 5 > this.game.WORLD_WIDTH ||
             position.y < 0 ||
             position.y + 5 > this.game.WORLD_HEIGHT - 5) {
             updateScoreBoard();
+            punch.play();
             return this.game.gameover();
         }
 
@@ -120,7 +122,6 @@ window.Pipes = (function() {
                     position.x - 2.5 <= (this.pipeArr[i].bottom.pos.x + 2.15) &&
                         position.y + 2.5 >= (this.pipeArr[i].bottom.pos.y - 2.5)) {
                 updateScoreBoard();
-               var punch = new Audio("sound/pipe.mp3");
                 punch.play();
                 return this.game.gameover();
             }
@@ -129,7 +130,6 @@ window.Pipes = (function() {
                     position.x - 2.5 <= (this.pipeArr[i].top.pos.x + 2.15) &&
                         position.y - 2.5 <= (this.pipeArr[i].top.pos.y + 2.5)) {
                 updateScoreBoard();
-                var punch = new Audio("sound/pipe.mp3");
                 punch.play();
                 return this.game.gameover();
             }
