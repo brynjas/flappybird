@@ -1,7 +1,6 @@
 
 window.Bg = (function() {
     'use strict';
-                console.log("inní Background ");
 
 
     var Bg = function(el, game, x, y) {
@@ -14,7 +13,6 @@ window.Bg = (function() {
     }
 
     Bg.prototype.onFrame = function(delta) {
-            console.log("inní Background onFrame");
             this.pos.x -= 0.1;
             if (this.pos.x < -300 ) {
                 this.pos.x = 10;

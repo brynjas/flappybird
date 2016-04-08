@@ -17,6 +17,7 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+
         <!-- endbuild -->
     </head>
     <body>
@@ -28,7 +29,6 @@
             
             <div class="Background"> </div>
 
-       
             <div class="bottom1 Pipes"></div> 
             <div class="top1 Pipes"></div>
 
@@ -41,6 +41,7 @@
            
 
             <div class="Player">
+
                 
                 <div class="bird">
                     <div class="wing"> </div>
@@ -54,14 +55,18 @@
             <div class="Scoreboard">
                 <div class="fontStyle">Current Score:<span class="score">0</span></div>
                 <div class="fontStyle">Highscore:<span class="highscore">0</span></div>
-                <!--<div class="highscore">0</div>-->
                 <button class="Scoreboard-restart">
                     <span class="Scoreboard-restartText">Restart</span>
                 </button>
             </div>
 
-
-
+            <div class="Music">
+      
+            <button class="Mute">Mute</button>
+                
+                <audio  id="myMusic" src="Sound/8bit.mp3"> </audio> 
+       
+            </div>
         </div>
 
         <!-- build:js scripts/vendor.js -->

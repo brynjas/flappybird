@@ -122,7 +122,13 @@ overflow: hidden;
 	margin-left: -51.2em;
 	margin-top: -28.8em;
 }
+.Music {
 
+	position: absolute;
+	top:0;
+	left: 0;
+
+}
 
 
 .Ground {
