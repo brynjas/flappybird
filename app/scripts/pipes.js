@@ -1,5 +1,10 @@
 window.Pipes = (function() {
     'use strict';
+    var SCORE = 0;
+    var HIGHSCORE = 0;
+    var scoreCounter = $(".scoreCount");
+    var scoreElem = $(".score");
+    var highscoreElem = $(".highscore");
 
     var SPEED = 20;
     var GAP = 20;
@@ -14,6 +19,7 @@ window.Pipes = (function() {
             x: x,
             y: y
         };
+        this.passed = false;
     };
 
     var originalPipeGap = [getRandomInt(gapMin, gapMax), getRandomInt(gapMin, gapMax), getRandomInt(gapMin, gapMax)];
@@ -58,27 +64,43 @@ window.Pipes = (function() {
             this.pipeArr[i].bottom.pos.y = originalPipeGap[i] + GAP;
             this.pipeArr[i].top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].top.pos.x + 'em, ' + (this.pipeArr[i].top.pos.y - 69.5) + "em)");
             this.pipeArr[i].bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].bottom.pos.x + "em, " + this.pipeArr[i].bottom.pos.y + "em)");
+            this.pipeArr[i].top.passed = false;
         }
 
+        SCORE = 0;
+        scoreCounter.html(0);
 
-
-		this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + this.pipeObj1.top.pos.y + "em)");
-        this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
+		//this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + this.pipeObj1.top.pos.y + "em)");
+        //this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
 
 	};
 
 
 
 	Pipes.prototype.onFrame = function(delta, position) {
-		/*
-        this.pipeObj1.top.pos.x -= delta * SPEED;
-        this.pipeObj1.bottom.pos.x -= delta * SPEED;
-*/      for(var i = 0; i < 3; i++) {
+        
+        if (position.x < 0 ||
+            position.x + 5 > this.game.WORLD_WIDTH ||
+            position.y < 0 ||
+            position.y + 5 > this.game.WORLD_HEIGHT - 5) {
+            updateScoreBoard();
+            return this.game.gameover();
+        }
+
+        for(var i = 0; i < 3; i++) {
             this.pipeArr[i].top.pos.x -= delta * SPEED;
             this.pipeArr[i].bottom.pos.x -= delta * SPEED;
 
             this.pipeArr[i].top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].top.pos.x + 'em, ' + (this.pipeArr[i].top.pos.y - 69.5) + "em)");
             this.pipeArr[i].bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].bottom.pos.x + "em, " + this.pipeArr[i].bottom.pos.y + "em)");
+
+            if((this.pipeArr[i].top.pos.x < 30) && (this.pipeArr[i].top.passed === false)) {
+                SCORE++;
+                console.log("SCORE: " + SCORE);
+                scoreCounter.html(SCORE);
+                this.pipeArr[i].top.passed = true;
+            }
+
 
             if(this.pipeArr[i].top.pos.x < -10) {
                 var pipeGap = getRandomInt(gapMin, gapMax);
@@ -90,62 +112,38 @@ window.Pipes = (function() {
 
                 this.pipeArr[i].top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].top.pos.x + 'em, ' + (this.pipeArr[i].top.pos.y - 69.5) + "em)");
                 this.pipeArr[i].bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].bottom.pos.x + "em, " + this.pipeArr[i].bottom.pos.y + "em)");
+                this.pipeArr[i].top.passed = false;
             }
+
 
             if(position.x + 2.5 >= (this.pipeArr[i].bottom.pos.x - 2.15) &&
                     position.x - 2.5 <= (this.pipeArr[i].bottom.pos.x + 2.15) &&
                         position.y + 2.5 >= (this.pipeArr[i].bottom.pos.y - 2.5)) {
+                updateScoreBoard();
                 return this.game.gameover();
             }
 
             if(position.x + 2.5 >= (this.pipeArr[i].top.pos.x - 2.15) &&
                     position.x - 2.5 <= (this.pipeArr[i].top.pos.x + 2.15) &&
                         position.y - 2.5 <= (this.pipeArr[i].top.pos.y + 2.5)) {
+                updateScoreBoard();
                 return this.game.gameover();
             }
-        }
-        // var worldHeight = this.game.WORLD_HEIGHT;
-
-        // console.log("Player-x:" + position.x + " y:" + position.y);
-        //console.log("TopPipe-x:" + this.pipeObj1.top.pos.x + " y:" + this.pipeObj1.top.pos.y);
-/*
- 		this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + (this.pipeObj1.top.pos.y - 69.5) + "em)");
-        this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.bottom.pos.x + "em, " + this.pipeObj1.bottom.pos.y + "em)");
-*/         
-        /*if(this.pipeObj1.top.pos.x < -10) {
-
-            this.pipeObj1.top.pos.x = this.game.WORLD_WIDTH + 5;
-            this.pipeObj1.bottom.pos.x = this.game.WORLD_WIDTH + 5;
-
-            this.pipeObj1.top.pos.y = pipeGap;
-            this.pipeObj1.bottom.pos.y = pipeGap + GAP;
-
-            this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + (this.pipeObj1.top.pos.y - 69.5) + "em)");
-            this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.bottom.pos.x + "em, " + this.pipeObj1.bottom.pos.y + "em)");
-*/
-            //this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.y + 'em)');
-            //this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translateY(' + this.pipeObj1.bottom.pos.y + 'em)');
-            //this.pipeObj1.top.pipe.css('height', this.pipeObj1.top.pos.y + 'em');
-            //this.pipeObj1.bottom.pipe.css('height', this.pipeObj1.bottom.pos.y + 'em');
-        //}
-
-        /*if(position.x + 2.5 >= (this.pipeObj1.bottom.pos.x - 2.15) &&
-                position.x - 2.5 <= (this.pipeObj1.bottom.pos.x + 2.15) &&
-                    position.y + 2.5 >= (this.pipeObj1.bottom.pos.y - 2.5)) {
-            return this.game.gameover();
-        }
-
-        if(position.x + 2.5 >= (this.pipeObj1.top.pos.x - 2.15) &&
-                position.x - 2.5 <= (this.pipeObj1.top.pos.x + 2.15) &&
-                    position.y - 2.5 <= (this.pipeObj1.top.pos.y + 2.5)) {
-            return this.game.gameover();
-        }*/
-             
+        }      
     }
    
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
-    }	
+    }
+
+    function updateScoreBoard() {
+        //console.log("updateScoreBoard CALLED!!!");
+        scoreElem.html(SCORE);
+        if(SCORE > HIGHSCORE) {
+            HIGHSCORE = SCORE;
+            highscoreElem.html(HIGHSCORE);
+        }
+    }
 
 	return Pipes;
 
