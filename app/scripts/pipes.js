@@ -3,6 +3,8 @@ window.Pipes = (function() {
 
     var SPEED = 20;
     var GAP = 20;
+    var gapMin = 4.5;
+    var gapMax = 30;
     //var pipeInterval = this.game.WORLD_WIDTH / 3;
 
     
@@ -14,49 +16,53 @@ window.Pipes = (function() {
         };
     };
 
-    var originalPipeGap = getRandomInt(10, 30);
+    var originalPipeGap = [getRandomInt(gapMin, gapMax), getRandomInt(gapMin, gapMax), getRandomInt(gapMin, gapMax)];
+    //var originalPipeGap = getRandomInt(7.5,35);
 
     var Pipes = function(el, game) {
         this.el = el;
         this.game = game;
         
-        this.pipeObj1 = {top: new PipeEl(this.el.find('.top1'), this.game.WORLD_WIDTH + 15, originalPipeGap),
-    					 bottom: new PipeEl(this.el.find('.bottom1'), this.game.WORLD_WIDTH + 15, originalPipeGap + GAP)};
+        this.pipeObj1 = {top: new PipeEl(this.el.find('.top1'), this.game.WORLD_WIDTH + 15, originalPipeGap[0]),
+    					 bottom: new PipeEl(this.el.find('.bottom1'), this.game.WORLD_WIDTH + 15, originalPipeGap[0] + GAP)};
 
         this.pipeArr = [
-                        {top: new PipeEl(this.el.find('.top1'), this.game.WORLD_WIDTH + 15, originalPipeGap),
-                         bottom: new PipeEl(this.el.find('.bottom1'), this.game.WORLD_WIDTH + 15, originalPipeGap + GAP)},
+                        {top: new PipeEl(this.el.find('.top1'), this.game.WORLD_WIDTH + 15, originalPipeGap[0]),
+                         bottom: new PipeEl(this.el.find('.bottom1'), this.game.WORLD_WIDTH + 15, originalPipeGap[0] + GAP)},
 
-                         {top: new PipeEl(this.el.find('.top2'), this.game.WORLD_WIDTH + 15 + (this.game.WORLD_WIDTH / 3), originalPipeGap),
-                         bottom: new PipeEl(this.el.find('.bottom2'), this.game.WORLD_WIDTH + 15 + (this.game.WORLD_WIDTH / 3), originalPipeGap + GAP)},
+                         {top: new PipeEl(this.el.find('.top2'), this.game.WORLD_WIDTH + 15 + (this.game.WORLD_WIDTH / 2.64), originalPipeGap[1]),
+                         bottom: new PipeEl(this.el.find('.bottom2'), this.game.WORLD_WIDTH + 15 + (this.game.WORLD_WIDTH / 2.64), originalPipeGap[1] + GAP )},
 
-                         {top: new PipeEl(this.el.find('.top3'), this.game.WORLD_WIDTH + 15 + 2*(this.game.WORLD_WIDTH / 3), originalPipeGap),
-                         bottom: new PipeEl(this.el.find('.bottom3'), this.game.WORLD_WIDTH + 15 + 2*(this.game.WORLD_WIDTH / 3), originalPipeGap + GAP)}
+                         {top: new PipeEl(this.el.find('.top3'), this.game.WORLD_WIDTH + 15 + 2*(this.game.WORLD_WIDTH / 2.64), originalPipeGap[2]),
+                         bottom: new PipeEl(this.el.find('.bottom3'), this.game.WORLD_WIDTH + 15 + 2*(this.game.WORLD_WIDTH / 2.64), originalPipeGap[2] + GAP)}
                          ];
-
-        this.pipeTest = [{top: "turd", bottom: "nugget"},
-                        {top: "furb", bottom: "cracker"},
-                        {top: "herb", bottom: "bisquit"}];
 
       };
 	/**
 	 * Resets the state of the player for a new game.
 	 */
 	Pipes.prototype.reset = function() {
+        originalPipeGap = [getRandomInt(gapMin, gapMax), getRandomInt(gapMin, gapMax), getRandomInt(gapMin, gapMax)];
 
-        console.log("er í pipe reset");
+        this.pipeArr[0].top.pos.x = this.game.WORLD_WIDTH + 15;
+        this.pipeArr[0].bottom.pos.x = this.game.WORLD_WIDTH + 15;
 
-        console.log("Pipe1: " + this.pipeTest[0].top);
+        this.pipeArr[1].top.pos.x = this.game.WORLD_WIDTH + 15 + (this.game.WORLD_WIDTH / 2.64);
+        this.pipeArr[1].bottom.pos.x = this.game.WORLD_WIDTH + 15 + (this.game.WORLD_WIDTH / 2.64);
 
-        this.pipeObj1.top.pos.x = this.game.WORLD_WIDTH + 15;
-        this.pipeObj1.top.pos.y = originalPipeGap;
-        this.pipeObj1.bottom.pos.x = this.game.WORLD_WIDTH + 15;
-        this.pipeObj1.bottom.pos.y = originalPipeGap + GAP;
+        this.pipeArr[2].top.pos.x = this.game.WORLD_WIDTH + 15 + 2*(this.game.WORLD_WIDTH / 2.64);
+        this.pipeArr[2].bottom.pos.x = this.game.WORLD_WIDTH + 15 + 2*(this.game.WORLD_WIDTH / 2.64);
+
+        for(var i = 0; i < 3; i++) {
+            this.pipeArr[i].top.pos.y = originalPipeGap[i];
+            this.pipeArr[i].bottom.pos.y = originalPipeGap[i] + GAP;
+            this.pipeArr[i].top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].top.pos.x + 'em, ' + (this.pipeArr[i].top.pos.y - 69.5) + "em)");
+            this.pipeArr[i].bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].bottom.pos.x + "em, " + this.pipeArr[i].bottom.pos.y + "em)");
+        }
 
 
-
-        this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + 0+ 'em, ' + 0+ "em)");
-        this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
+//      this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + 0+ 'em, ' + 0+ "em)");
+//      this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
 
 		//this.pipeObj1.top.pipe.css('transform', 'translateZ(0) translate(' + this.pipeObj1.top.pos.x + 'em, ' + this.pipeObj1.top.pos.y + "em)");
         //this.pipeObj1.bottom.pipe.css('transform', 'translateZ(0) translate(' + (this.game.WORLD_WIDTH + 15) + "em, " + (originalPipeGap + GAP) + "em)");
@@ -70,7 +76,6 @@ window.Pipes = (function() {
         this.pipeObj1.top.pos.x -= delta * SPEED;
         this.pipeObj1.bottom.pos.x -= delta * SPEED;
 */      for(var i = 0; i < 3; i++) {
-            var pipeGap = getRandomInt(7.5, 35);
             this.pipeArr[i].top.pos.x -= delta * SPEED;
             this.pipeArr[i].bottom.pos.x -= delta * SPEED;
 
@@ -78,7 +83,7 @@ window.Pipes = (function() {
             this.pipeArr[i].bottom.pipe.css('transform', 'translateZ(0) translate(' + this.pipeArr[i].bottom.pos.x + "em, " + this.pipeArr[i].bottom.pos.y + "em)");
 
             if(this.pipeArr[i].top.pos.x < -10) {
-
+                var pipeGap = getRandomInt(gapMin, gapMax);
                 this.pipeArr[i].top.pos.x = this.game.WORLD_WIDTH + 5;
                 this.pipeArr[i].bottom.pos.x = this.game.WORLD_WIDTH + 5;
 
